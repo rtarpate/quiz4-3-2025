@@ -25,16 +25,16 @@ let reviewTitles = ["My Favorite Workout Game", "Poor Choreography", "Buggy with
 function starImages(rating)
 {
       //step 4a: created variable for imageText
-      const imageText = "";
+      let imageText = "";
 
       //step 4b: created for loop 
-      for( let i = 0; i <= rating; i++)
+      for( let i = 1; i <= rating; i++)
       {
             //step 4c:
-            imageText += "<img src = 'star.png' alt ='' >";
+            imageText = imageText + "<img src = 'star.png' alt ='' >";
 
 
-            rating = rating + 1;
+            
 
       }
 
@@ -42,17 +42,17 @@ function starImages(rating)
       return imageText;
 
       //step 5:creates for loop
-      for(let j = 0; j < reviewers; j++)
+      for(let j = 0; j < reviewers.length; j++)
       {
             //step 6a: creates vairbel reviewCode
-            const reviewCode = "";
+            let reviewCode = "";
 
             //step 6b: creates if else loop
-            if(reviewType == P)
+            if(reviewType[i] == P)
             {
                   reviewCode += "<table class = 'prime'>";
             }
-            else if (reviewType == N)
+            else if (reviewType[i] == N)
             {
                   reviewCode += "<table class = 'new'>";
             }
@@ -62,14 +62,19 @@ function starImages(rating)
             }
 
             //step 6c: added HTML code to reivewCode varibael
-            reviewCode += <table>
-            reviewCode += <caption>reviewTitles[i]</caption>;
-            reviewCode += <tr><th>By</th><td>reviewers[i]</td></tr>;
-            reviewCode += <tr><th>Review Date</th><td>reviewDates</td></tr>;
-            reviewCode += <tr><td colspan = '2'>reviews[i]</td></tr>;
-            reviewCode += </table>;
+            reviewCode += "<caption>" + reviewTitles[i] + "</caption>";
 
-            insertAdjacentHTML(reviewCode)
+            reviewCode += "<tr><th>By</th><td>" + reviewers[i] + "</td></tr>";
+          
+            reviewCode += "<tr><th>Review Date</th><td>" + reviewDates[i] + "</td></tr>";
+          
+            reviewCode += "<tr><th>Rating</th><td>" + starImages(stars[i]) + "</td></tr>";
+          
+            reviewCode += "<tr><td colspan='2'>" + reviews[i] + "</td></tr>";
+          
+            reviewCode += "</table>";
+
+            document.getElementsByTagName("article")[0].insertAdjacentElement("beforeend", reviewCode);
       }
 
     
