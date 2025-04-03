@@ -42,7 +42,7 @@ function starImages(rating)
       return imageText;
 
       //step 5:creates for loop
-      for(let j = 0; j < reviewers.length; j++)
+      for(let j = 1; j < reviewers.length; j++)
       {
             //step 6a: creates vairbel reviewCode
             let reviewCode = "";
